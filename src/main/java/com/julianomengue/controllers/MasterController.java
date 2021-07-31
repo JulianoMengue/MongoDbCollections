@@ -22,6 +22,7 @@ public class MasterController {
 
 	@GetMapping("/fotos")
 	public String showFotos(Model model) {
+		this.masterService.deleteFotosWithoutOwners();
 		List<Foto> fotos = this.masterService.getFotos();
 		model.addAttribute("fotos", fotos);
 		return "html/fotos";
@@ -49,11 +50,6 @@ public class MasterController {
 		List<User> users = this.masterService.getUsers();
 		model.addAttribute("users", users);
 		return "html/users";
-	}
-
-	@GetMapping()
-	public void deleteFotos(Model model) {
-		this.masterService.deleteFotosWithoutOwners();
 	}
 
 }
