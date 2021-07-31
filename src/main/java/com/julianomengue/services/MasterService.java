@@ -35,6 +35,18 @@ public class MasterService {
 		return list;
 	}
 
+	public List<Foto> deleteFotosWithoutOwners() {
+		Query query = new Query();
+		query.fields().include("_id", "title", "size");
+		List<Foto> list = mongoTemplate.find(query, Foto.class);
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getOwners().size() == 0) {
+				delete(list.get(i));
+			}
+		}
+		return list;
+	}
+
 	public List<User> getUsers() {
 		return this.userRepo.findAll();
 	}

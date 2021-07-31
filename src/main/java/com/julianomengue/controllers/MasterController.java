@@ -51,4 +51,9 @@ public class MasterController {
 		return "html/users";
 	}
 
+	@GetMapping()
+	public void deleteFotos(Model model) {
+		this.masterService.deleteFotosWithoutOwners();
+	}
+
 }
