@@ -38,14 +38,14 @@ public class MasterService {
 	public void deleteFotosWithoutOwners() {
 		List<Foto> fotos = getFotos();
 		for (int i = 0; i < fotos.size(); i++) {
-			if (fotos.get(i).getId() != "610514c386d1db45a6de1c17"
-					|| !fotos.get(i).getTitle().contentEquals("PROFILE_FOTO")) {
-				if (fotos.get(i).getOwners().size() == 0) {
-					delete(fotos.get(i));
+			if (fotos.get(i).getId() != "610514c386d1db45a6de1c17") {
+				if (!fotos.get(i).getTitle().contentEquals("PROFILE_FOTO")) {
+					if (fotos.get(i).getOwners().size() == 0) {
+						delete(fotos.get(i));
+					}
 				}
 			}
 		}
-
 	}
 
 	public List<User> getUsers() {
