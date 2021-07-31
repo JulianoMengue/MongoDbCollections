@@ -35,18 +35,16 @@ public class MasterService {
 		return list;
 	}
 
-	public List<Foto> deleteFotosWithoutOwners() {
-		Query query = new Query();
-		query.fields().include("_id", "title", "size");
-		List<Foto> list = mongoTemplate.find(query, Foto.class);
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId() != "6105134b86d1db45a6de1c13") {
-				if (list.get(i).getOwners().size() == 0) {
-					delete(list.get(i));
+	public void deleteFotosWithoutOwners() {
+		List<Foto> fotos = getFotos();
+		for (int i = 0; i < fotos.size(); i++) {
+			if (fotos.get(i).getId() != "610514c386d1db45a6de1c17") {
+				if (fotos.get(i).getOwners().size() == 0) {
+					delete(fotos.get(i));
 				}
 			}
 		}
-		return list;
+
 	}
 
 	public List<User> getUsers() {
