@@ -40,7 +40,7 @@ public class MasterService {
 		query.fields().include("_id", "title", "size");
 		List<Foto> list = mongoTemplate.find(query, Foto.class);
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getId() != "60ff05a9bf4b9c775a9cf1fc") {
+			if (list.get(i).getId() != "6105134b86d1db45a6de1c13") {
 				if (list.get(i).getOwners().size() == 0) {
 					delete(list.get(i));
 				}
