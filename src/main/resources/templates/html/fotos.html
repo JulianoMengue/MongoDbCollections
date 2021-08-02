@@ -29,7 +29,7 @@
 					<td><p th:text="${foto.title}"></p></td>
 					<td><p th:text="${foto.owners}"></p></td>
 					<td><p th:text="${foto.size}"></p></td>
-					<td><a th:href="@{/delete-foto(id=${foto.id})}">Delete</a></td>
+					<td><a th:href="@{/delete-foto(id=${foto.id})}" class="text-info">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>
